@@ -12,9 +12,14 @@ import java.util.Scanner;
 /**
  *
  * @author Formation
+ * @version 1.0
+ * <h1>L'application JoueurScanner permet de choisir et de créer des Listes de joueurs différenrs</h1>
  */
 public class JoueurScanner {
  private static Scanner sc = new Scanner(System.in);
+ /**
+  * <b>On a 3 Listes de joueurs différent qui vont utilisées dans les méthodes statiques de la classe</b> 
+ */
  private static     List <JoueurF> ListeJoueursF = new ArrayList <JoueurF> ();
  private static     List <JoueurR> ListeJoueursR = new ArrayList <JoueurR> ();
  private static     List <JoueurH> ListeJoueursH = new ArrayList <JoueurH> ();
@@ -67,6 +72,7 @@ public class JoueurScanner {
     /**
      * 
      * @param ListeJoueurs
+     * @param oj : joueur à ajouter à ajouter dans les listeJoueurs (on aura 3 types joueurs différents)
      * <b>Toutes les exceptions seront gérées dans le main.</b>
      * <i>On saisit toutes les données du joueur et on contrôle la saisie</i>
      * @throws Exception 
@@ -117,12 +123,21 @@ public class JoueurScanner {
 
            ListeJoueurs.add(oj);
     }
-    
+    /**
+     * 
+     * @param temp
+     * @return temp modifier de type String
+     */
     public static String setClavier(String temp)
     {
         temp = sc.next();
         return temp;
     }
+    /**
+     * <i>On teste si c'est une numérique sinon on retourne la valeur rentrée en paramètre</i>
+     * @param temp
+     * @return temp modifier de type int
+     */
      public static int setClavier(int temp)
     {
          if (sc.hasNextInt()) {
@@ -131,7 +146,11 @@ public class JoueurScanner {
 
         return temp;
     }
-     
+     /**
+      * <h2>On constitue dans les 3 listes de joueurs différents selon la lecture de ListeJoueurs</h2>
+      * @param ListeJoueurs
+      * @throws Exception 
+      */
    public static void constitueEquipe(List<Joueur> ListeJoueurs) throws Exception
    {
       
