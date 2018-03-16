@@ -5,17 +5,22 @@
  */
 package maxencejava;
 
+import java.awt.Color;
+
 /**
  *
  * @author Formation
  */
-public class Joueur {
+public class Joueur implements Ressource{
         private String Nom;
         private String Prenom;
         private int Age;
         private String Pseudo;
         private String Mdp;
         private Genre genre;
+        
+       //Dûe à la Ressource
+       private String jeux;
       /**
        * <b>Toutes les données des attributs sont initialisées.</b>
        */
@@ -74,6 +79,21 @@ public class Joueur {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String getJeux() {
+        return this.jeux;
+    }
+    
+    @Override
+    public void setJeux(String jeux) {
+       this.jeux = jeux;
+    }
+
+    @Override
+    public Color getCouleur() {
+        return Color.WHITE;
     }
     
     
