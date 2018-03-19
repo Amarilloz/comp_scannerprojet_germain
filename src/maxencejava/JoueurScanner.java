@@ -53,7 +53,7 @@ public class JoueurScanner {
                     System.out.println("2 : Pour créer un Joueur de Rugby");
                     System.out.println("3 : Pour créer un Joueur de Hand Ball");
                     System.out.println("4 : Pour vider la Liste de Joueurs");
-                    System.out.println("5 : Pour Constittuer les Equipes de Joueur");
+                    System.out.println("5 : Pour Constituer les Equipes de Joueur");
                     System.out.println("6 : Pour Afficher les Listes de Joueurs");
                     System.out.println("7 : Pour Créer une équipe");
                     System.out.println("8 : Pour Créer un Terrain");
@@ -89,7 +89,8 @@ public class JoueurScanner {
                                 break;
                     case 9 :  ListeRessource.add(creerUnMateriel());
                                 break;                   
-
+                    case 10 :  afficheListeRessources(ListeRessource);
+                                break;
                 }                
             }
            while(typejoueur != 0);
@@ -263,4 +264,17 @@ public class JoueurScanner {
        
        return oM;
    }
+      
+     public static void afficherRessource(Ressource oR)
+     {
+         System.out.println("Jeux :"+oR.getJeux()+" Couleur : "+oR.getCouleur());
+     }
+     
+     public static void afficheListeRessources(List<Ressource> ListeRessources)
+     {
+         for(Ressource oR: ListeRessources)
+         {
+             afficherRessource(oR);
+         }
+     }
 }
