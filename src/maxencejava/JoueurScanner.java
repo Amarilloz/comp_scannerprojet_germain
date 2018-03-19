@@ -23,6 +23,12 @@ public class JoueurScanner {
  private static     List <JoueurF> ListeJoueursF = new ArrayList <JoueurF> ();
  private static     List <JoueurR> ListeJoueursR = new ArrayList <JoueurR> ();
  private static     List <JoueurH> ListeJoueursH = new ArrayList <JoueurH> ();
+ 
+ /**
+  * Création des Listes de Resources
+  * 
+  */
+ private static List<Ressource> ListeRessource = new ArrayList<Ressource>();
     /**
      * @param args the command line arguments
      */
@@ -33,17 +39,29 @@ public class JoueurScanner {
            //int nbJoueurs =0;
            int typejoueur = 0;
            String valeur= "";
+           boolean num = false;
            
            List <Joueur> ListeJoueurs = new ArrayList <Joueur> (); 
            
            do
            {
-                System.out.println(" Saisir le type joueur (1,2 ou 3) ou 0 = fin : ");
-                while (!sc.hasNextInt()) {
-                    System.out.println(" Saisir le type joueur (1,2 ou 3) ou 0 = fin : ");
-                    sc.next();
-                }
-                valeur = sc.next();
+                do {
+                    System.out.println("Menu : ");
+                    System.out.println("Saisir le numéro suivant :");
+                    System.out.println("0 : pour sortir");
+                    System.out.println("1 : Pour créer un Joueur de Foot");
+                    System.out.println("2 : Pour créer un Joueur de Rugby");
+                    System.out.println("3 : Pour créer un Joueur de Hand Ball");
+                    System.out.println("4 : Pour vider la Liste de Joueurs");
+                    System.out.println("5 : Pour Constittuer les Equipes de Joueur");
+                    System.out.println("6 : Pour Afficher les Listes de Joueurs");
+                    System.out.println("7 : Pour Créer une équipe");
+                    System.out.println("8 : Pour Créer un Terrain");
+                    System.out.println("9 : Pour Créer un Ballon");
+                    valeur = sc.next();
+                    if(sc.hasNextInt()) num = true;
+                } while (!num);
+                
                 typejoueur = Integer.parseInt(valeur);
                 switch(typejoueur)
                 {
@@ -53,17 +71,29 @@ public class JoueurScanner {
                                 break;
                     case 3 :  saisir_joueur(ListeJoueurs, new JoueurH());
                                 break;
+                    case 4 :  clearJoueurs();
+                                break;
+                    case 5 :  constitueEquipe(ListeJoueurs);
+                                break;
+                    case 6 :  afficheJoueurs(ListeJoueursF,"FootBall");
+                                afficheJoueurs(ListeJoueursR,"Rugby");
+                                afficheJoueurs(ListeJoueursH,"HandBall");
+                                break;  
+                    case 7 :  ListeRessource.add(creerUneEquipe(ListeJoueurs)) ;
+                                break;
+                    case 8 :  ListeRessource.add(creerUnTerrain());
+                                break;
+                    case 9 :  ListeRessource.add(creerUnMateriel());
+                                break;                   
 
                 }                
             }
            while(typejoueur != 0);
            
-           clearJoueurs();
-           constitueEquipe(ListeJoueurs);
            
-           afficheJoueurs(ListeJoueursF,"FootBall");
-           afficheJoueurs(ListeJoueursR,"Rugby");
-           afficheJoueurs(ListeJoueursH,"HandBall");
+           
+           
+           
            
        } catch (Exception e) {
            System.out.println(e.getMessage());
@@ -188,5 +218,45 @@ public class JoueurScanner {
            ojb = (Joueur) oj;
            System.out.println("Nom : "+ojb.getNom());
        }
+   }
+   
+   public static Equipe creerUneEquipe(List ListeJoueur)
+   {
+       Equipe oE;
+       String nom="";
+       
+       System.out.println("Saisir le nom de l'équipe :");
+       nom =setClavier(nom);
+       
+       oE = new Equipe(nom, ListeJoueur);
+       
+       return oE;
+   }
+   
+    public static Terrain creerUnTerrain()
+   {
+       Terrain oT;
+       String nom="";
+       int X1=0,Y1=0,X2=0,Y2=0;
+       
+       System.out.println("Saisir la localisation du Terrain :");
+       nom =setClavier(nom);
+       
+       oT = new Terrain(X1, Y1, X2, Y2, nom);
+       
+       return oT;
+   }
+    
+      public static Materiel creerUnMateriel()
+   {
+       Materiel oM;
+       String nom="";
+             
+       System.out.println("Saisir le nom du Matériel :");
+       nom =setClavier(nom);
+       
+       oM = new Materiel(nom);
+       
+       return oM;
    }
 }
