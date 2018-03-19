@@ -58,8 +58,12 @@ public class JoueurScanner {
                     System.out.println("7 : Pour Créer une équipe");
                     System.out.println("8 : Pour Créer un Terrain");
                     System.out.println("9 : Pour Créer un Ballon");
-                    valeur = sc.next();
-                    if(sc.hasNextInt()) num = true;
+                    
+                    if(sc.hasNextInt()) {
+                        num = true;
+                        valeur = sc.next();
+                    }
+                    else sc.next();
                 } while (!num);
                 
                 typejoueur = Integer.parseInt(valeur);
