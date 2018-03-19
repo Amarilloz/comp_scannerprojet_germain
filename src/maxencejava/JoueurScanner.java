@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Formation
  * @version 1.0
- * <h1>L'application JoueurScanner permet de choisir et de créer des Listes de joueurs différenrs</h1>
+ * <h1>L'application JoueurScanner permet de choisir et de créer des Listes de joueurs différents</h1>
  */
 public class JoueurScanner {
  private static Scanner sc = new Scanner(System.in);
